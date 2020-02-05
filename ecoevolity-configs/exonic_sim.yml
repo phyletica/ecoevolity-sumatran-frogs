@@ -1,0 +1,142 @@
+---
+#we can also set this to a fixed starting place
+event_model_prior:
+    dirichlet_process:
+        parameters:
+            concentration:
+                value: 2.62 #mean on 6 events
+                estimate: false
+
+event_time_prior:
+    exponential_distribution:
+        rate: 1000.0
+#equivalent to formula 1/rate so in this case
+#1/100 = 0.01 which divided by u (1.78*10^-9) = 5.6 mya
+#1/1000 = 0.001 = 500 kya Run2
+#1/6000 = 0.00017 = 95 kya
+
+
+mcmc_settings:
+    chain_length: 75000
+    sample_frequency: 50
+
+
+global_comparison_settings:
+    ploidy: 2
+    genotypes_are_diploid: false
+    markers_are_dominant: false
+    population_name_delimiter: " "
+    population_name_is_prefix: true
+    constant_sites_removed: false
+    equal_population_sizes: false
+    parameters:
+        #this is based on a theta of 0.0004 divided by ploidy and 2 (mutation rate is 1)
+        #so 0.0004/4 = 0.0095
+        population_size:
+            value: 0.0035
+            estimate: true
+            prior:
+                gamma_distribution: #this distribution centers on my mean value of 0.095
+                #in round two lets do a diffuse distribution of 2 and 0.005
+                    shape: 3.5
+                    scale: 0.001
+                    #this is a fairly concise distr centered on the mean 
+        
+        root_relative_population_size:
+            estimate: true
+            prior:
+                gamma_distribution:
+                # Let's set the "default" for comparisons be an exponential
+                # with a mean of 0.5 (i.e., prefering expansion, a priori).
+                    shape: 1
+                    scale: 1
+
+        freq_1:
+            value: 0.5
+            estimate: false
+
+        mutation_rate:
+        #so this will scale time and Ne by mutation rate
+        #so to convert both, simply multiply by u
+            value: 1.0
+            estimate: false
+
+comparisons:
+- comparison:
+    path: "cat_exonic_north.nex"
+    parameters:
+        root_relative_population_size:
+            value: 2.0
+            estimate: true
+            prior:
+                gamma_distribution:
+                # Let's override the "default" for this comparison
+                # An exponential with a mean of 2.0 (i.e., more weight on
+                # contraction, a priori).
+                    shape: 1.0
+                    scale: 2.0
+- comparison:
+    path: "cat_exonic_south.nex"
+    parameters:
+        root_relative_population_size:
+            value: 0.5
+            estimate: true
+            prior:
+                gamma_distribution:
+                # Let's override the "default" for this comparison
+                # An exponential with a mean of 2.0 (i.e., more weight on
+                # contraction, a priori).
+                    shape: 1.0
+                    scale: 0.5
+- comparison:
+    path: "mod_exonic_north.nex"
+    parameters:
+        root_relative_population_size:
+            value: 2.0
+            estimate: true
+            prior:
+                gamma_distribution:
+                # Let's override the "default" for this comparison
+                # An exponential with a mean of 2.0 (i.e., more weight on
+                # contraction, a priori).
+                    shape: 1.0
+                    scale: 2.0
+- comparison:
+    path: "mod_exonic_south.nex"
+    parameters:
+        root_relative_population_size:
+            value: 0.5
+            estimate: true
+            prior:
+                gamma_distribution:
+                # Let's override the "default" for this comparison
+                # An exponential with a mean of 2.0 (i.e., more weight on
+                # contraction, a priori).
+                    shape: 1.0
+                    scale: 0.5
+- comparison:
+    path: "poe_exonic_north.nex"
+    parameters:
+        root_relative_population_size:
+            value: 0.5
+            estimate: true
+            prior:
+                gamma_distribution:
+                # Let's override the "default" for this comparison
+                # An exponential with a mean of 2.0 (i.e., more weight on
+                # contraction, a priori).
+                    shape: 1.0
+                    scale: 0.5
+- comparison:
+    path: "poe_exonic_south.nex"
+    parameters:
+        root_relative_population_size:
+            value: 2.0
+            estimate: true
+            prior:
+                gamma_distribution:
+                # Let's override the "default" for this comparison
+                # An exponential with a mean of 2.0 (i.e., more weight on
+                # contraction, a priori).
+                    shape: 1.0
+                    scale: 2.0
