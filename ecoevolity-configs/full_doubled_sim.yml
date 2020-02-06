@@ -76,7 +76,7 @@ comparisons:
                     shape: 1.0
                     scale: 2.0
 - comparison:
-    path: "../alignments/catamitus_denovo_south_doubled.nex"
+    path: "../alignments/cat_full_south_doubled.nex"
     parameters:
         root_relative_population_size:
             value: 0.5
