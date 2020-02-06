@@ -63,7 +63,7 @@ global_comparison_settings:
 
 comparisons:
 - comparison:
-    path: "cat_exonic_north.nex"
+    path: "../alignments/cat_exonic_north.nex"
     parameters:
         root_relative_population_size:
             value: 2.0
@@ -76,7 +76,7 @@ comparisons:
                     shape: 1.0
                     scale: 2.0
 - comparison:
-    path: "cat_exonic_south.nex"
+    path: "../alignments/cat_exonic_south.nex"
     parameters:
         root_relative_population_size:
             value: 0.5
@@ -89,7 +89,7 @@ comparisons:
                     shape: 1.0
                     scale: 0.5
 - comparison:
-    path: "mod_exonic_north.nex"
+    path: "../alignments/mod_exonic_north.nex"
     parameters:
         root_relative_population_size:
             value: 2.0
@@ -102,7 +102,7 @@ comparisons:
                     shape: 1.0
                     scale: 2.0
 - comparison:
-    path: "mod_exonic_south.nex"
+    path: "../alignments/mod_exonic_south.nex"
     parameters:
         root_relative_population_size:
             value: 0.5
@@ -115,7 +115,7 @@ comparisons:
                     shape: 1.0
                     scale: 0.5
 - comparison:
-    path: "poe_exonic_north.nex"
+    path: "../alignments/poe_exonic_north.nex"
     parameters:
         root_relative_population_size:
             value: 0.5
@@ -128,7 +128,7 @@ comparisons:
                     shape: 1.0
                     scale: 0.5
 - comparison:
-    path: "poe_exonic_south.nex"
+    path: "../alignments/poe_exonic_south.nex"
     parameters:
         root_relative_population_size:
             value: 2.0
