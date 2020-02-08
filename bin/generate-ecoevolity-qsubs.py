@@ -92,7 +92,7 @@ def main_cli(argv = sys.argv):
         args.seed = random.randint(1, 999999999)
     _RNG.seed(args.seed)
 
-    config_path_pattern = os.path.join(project.ECOEVOLITY_SIM_DIR, "*", "batch*", "*simcoevolity-sim-*.yml") 
+    config_path_pattern = os.path.join(project_util.ECOEVOLITY_SIM_DIR, "*", "batch*", "*simcoevolity-sim-*.yml") 
     for config_path in glob.glob(config_path_pattern):
         for i in range(args.number_of_runs):
             write_qsub(config_path = config_path,
