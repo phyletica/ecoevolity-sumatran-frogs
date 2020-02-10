@@ -34,7 +34,7 @@ do
     fi
 
     # run_script "$file_name" < ~/here-small-01p-50hr-1gb-any.txt
-    nsub -r -t "36:00:00" "$file_name"
+    nsub -r -t "12:00:00" "$file_name"
 
     cd "$bin_dir"
 
