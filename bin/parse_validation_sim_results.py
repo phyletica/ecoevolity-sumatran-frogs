@@ -10,7 +10,7 @@ import argparse
 
 import pycoevolity
 
-import proeject_util
+import project_util
 
 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 _LOG = logging.getLogger(os.path.basename(__file__))
@@ -85,7 +85,7 @@ def get_results_header(number_of_comparisons = 6, dpp = True):
         h.append("psrf_{0}".format(p))
     return h
 
-def get_empty_results_dict(number_of_comparisons = 8, dpp = True):
+def get_empty_results_dict(number_of_comparisons = 6, dpp = True):
     h = get_results_header(number_of_comparisons, dpp = dpp)
     return dict(zip(h, ([] for i in range(len(h)))))
 
@@ -96,7 +96,7 @@ def get_results_from_sim_rep(
         parameter_names,
         batch_number,
         sim_number,
-        number_of_comparisons = 8,
+        number_of_comparisons = 6,
         expected_number_of_samples = 1501,
         burnin = 301):
     posterior_paths = sorted(posterior_paths)
@@ -201,6 +201,7 @@ def get_results_from_sim_rep(
     return results
 
 def parse_simulation_results(
+        number_of_comparisons = 6,
         expected_number_of_runs = 4,
         expected_number_of_samples = 1501,
         burnin = 501):
@@ -210,7 +211,6 @@ def parse_simulation_results(
     for val_sim_dir in sorted(val_sim_dirs):
         dpp = True
         sim_name = os.path.basename(val_sim_dir)
-        number_of_comparisons = 8
         parameter_names = get_parameter_names(dpp = dpp)
         header = get_results_header(number_of_comparisons, dpp = dpp)
 
@@ -305,6 +305,7 @@ def main_cli(argv = sys.argv):
         args = parser.parse_args(argv)
 
     parse_simulation_results(
+            number_of_comparisons = 6,
             expected_number_of_runs = args.expected_number_of_runs,
             expected_number_of_samples = args.expected_number_of_samples,
             burnin = args.burnin)
