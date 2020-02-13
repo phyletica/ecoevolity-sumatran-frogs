@@ -16,8 +16,8 @@ fi
 
 simname="full_doubled_sim"
 cfgpath="../../ecoevolity-configs/${simname}.yml"
-outputdir="../../ecoevolity-simulations/${simname}/batch001"
-rngseed=16351804
+outputdir="../../ecoevolity-simulations/${simname}/batch002"
+rngseed=914542314
 nreps=100
 
 mkdir -p "$outputdir"

@@ -14,10 +14,10 @@ then
     module load gcc/5.3.0
 fi
 
-simname="full_doubled_sim"
+simname="exonic_sim"
 cfgpath="../../ecoevolity-configs/${simname}.yml"
-outputdir="../../ecoevolity-simulations/${simname}/batch001"
-rngseed=16351804
+outputdir="../../ecoevolity-simulations/${simname}/batch002"
+rngseed=914542314
 nreps=100
 
 mkdir -p "$outputdir"
