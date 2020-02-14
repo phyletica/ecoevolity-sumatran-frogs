@@ -1440,6 +1440,7 @@ def generate_model_plots(
         pad_right = 0.98,
         pad_bottom = 0.12,
         pad_top = 0.92,
+        x_label_size = 18.0,
         y_label_size = 18.0,
         y_label = None,
         number_font_size = 12.0,
@@ -1635,7 +1636,7 @@ def generate_model_plots(
             "True number of events ($k$)",
             horizontalalignment = "center",
             verticalalignment = "bottom",
-            size = 18.0)
+            size = x_label_size)
     if y_label is None:
         y_label = "Estimated number of events ($\\hat{{k}}$)"
     fig.text(0.005, 0.5,
@@ -1643,7 +1644,7 @@ def generate_model_plots(
             horizontalalignment = "left",
             verticalalignment = "center",
             rotation = "vertical",
-            size = 18.0)
+            size = y_label_size)
 
     gs.update(left = pad_left,
             right = pad_right,
@@ -1820,6 +1821,13 @@ def parse_results(paths):
 def main_cli(argv = sys.argv):
 
     brooks_gelman_1998_recommended_psrf = 1.2
+    plot_width = 2.5
+    plot_height = 2.4
+    pad_left = 0.15
+    pad_right = 0.94
+    pad_bottom = 0.2
+    pad_top = 0.90
+    axis_label_size = 14.0
 
     full_results = parse_results(glob.glob(
             os.path.join(project_util.ECOEVOLITY_SIM_DIR,
@@ -1866,7 +1874,7 @@ def main_cli(argv = sys.argv):
                     "label": "event time",
                     "short_label": "time",
                     "symbol": "t",
-                    "shared_axes": False,
+                    "shared_axes": True,
             },
             "ancestor-size": {
                     "headers": root_size_parameters,
@@ -1901,7 +1909,8 @@ def main_cli(argv = sys.argv):
         x_label = "True {0} (${1}$)".format(
                 p_info["label"],
                 p_info["symbol"])
-        y_label = "Estimated {0} ($\\hat{{{1}}}$)".format(
+        # y_label = "Estimated {0} ($\\hat{{{1}}}$)".format(
+        y_label = "Estimated {0}".format(
                 p_info["short_label"],
                 p_info["symbol"])
 
@@ -1915,16 +1924,16 @@ def main_cli(argv = sys.argv):
                 parameter_symbol = p_info["symbol"],
                 column_labels = column_labels,
                 row_labels = None,
-                plot_width = 2.2,
-                plot_height = 1.8,
-                pad_left = 0.175,
-                pad_right = 0.95,
-                pad_bottom = 0.14,
-                pad_top = 0.95,
+                plot_width = plot_width,
+                plot_height = plot_height,
+                pad_left = pad_left,
+                pad_right = pad_right,
+                pad_bottom = pad_bottom,
+                pad_top = pad_top,
                 x_label = x_label,
-                x_label_size = 18.0,
+                x_label_size = axis_label_size,
                 y_label = y_label,
-                y_label_size = 18.0,
+                y_label_size = axis_label_size,
                 force_shared_x_range = p_info["shared_axes"],
                 force_shared_y_range = p_info["shared_axes"],
                 force_shared_xy_ranges = True,
@@ -1944,16 +1953,16 @@ def main_cli(argv = sys.argv):
                 parameter_symbol = p_info["symbol"],
                 column_labels = doubled_column_labels,
                 row_labels = None,
-                plot_width = 2.2,
-                plot_height = 1.8,
-                pad_left = 0.175,
-                pad_right = 0.95,
-                pad_bottom = 0.14,
-                pad_top = 0.95,
+                plot_width = plot_width,
+                plot_height = plot_height,
+                pad_left = pad_left,
+                pad_right = pad_right,
+                pad_bottom = pad_bottom,
+                pad_top = pad_top,
                 x_label = x_label,
-                x_label_size = 18.0,
+                x_label_size = axis_label_size,
                 y_label = y_label,
-                y_label_size = 18.0,
+                y_label_size = axis_label_size,
                 force_shared_x_range = p_info["shared_axes"],
                 force_shared_y_range = p_info["shared_axes"],
                 force_shared_xy_ranges = True,
@@ -1990,16 +1999,16 @@ def main_cli(argv = sys.argv):
             parameter_symbol = "t",
             column_labels = disparity_column_labels,
             row_labels = None,
-            plot_width = 2.4,
-            plot_height = 2.0,
-            pad_left = 0.165,
-            pad_right = 0.95,
-            pad_bottom = 0.14,
-            pad_top = 0.92,
+            plot_width = plot_width,
+            plot_height = plot_height,
+            pad_left = pad_left,
+            pad_right = pad_right,
+            pad_bottom = pad_bottom,
+            pad_top = pad_top,
             x_label = x_label,
-            x_label_size = 18.0,
+            x_label_size = axis_label_size,
             y_label = y_label,
-            y_label_size = 18.0,
+            y_label_size = axis_label_size,
             force_shared_x_range = True,
             force_shared_y_range = True,
             force_shared_xy_ranges = True,
@@ -2018,13 +2027,14 @@ def main_cli(argv = sys.argv):
             column_labels = column_labels,
             row_labels = None,
             number_of_comparisons = 6,
-            plot_width = 2.1,
+            plot_width = 2.4,
             plot_height = 2.4,
-            pad_left = 0.13,
-            pad_right = 0.99,
-            pad_bottom = 0.22,
-            pad_top = 0.91,
-            y_label_size = 18.0,
+            pad_left = 0.1,
+            pad_right = 0.94,
+            pad_bottom = 0.195,
+            pad_top = 0.90,
+            x_label_size = 14.0,
+            y_label_size = 14.0,
             y_label = "Estimated number",
             number_font_size = 8.0,
             include_median = False,
@@ -2042,13 +2052,14 @@ def main_cli(argv = sys.argv):
             column_labels = doubled_column_labels,
             row_labels = None,
             number_of_comparisons = 6,
-            plot_width = 2.1,
+            plot_width = 2.4,
             plot_height = 2.4,
-            pad_left = 0.13,
-            pad_right = 0.99,
-            pad_bottom = 0.22,
-            pad_top = 0.91,
-            y_label_size = 18.0,
+            pad_left = 0.1,
+            pad_right = 0.94,
+            pad_bottom = 0.195,
+            pad_top = 0.90,
+            x_label_size = 14.0,
+            y_label_size = 14.0,
             y_label = "Estimated number",
             number_font_size = 8.0,
             include_median = False,
@@ -2056,7 +2067,7 @@ def main_cli(argv = sys.argv):
             include_prop_correct = False,
             # filter_parameter_prefix = "psrf_pop_size",
             # filter_threshold = 1.02,
-            plot_file_prefix = "full-doubled-")
+            plot_file_prefix = "full-doubled")
 
 
     # Generate histograms for the number of variable sites
@@ -2153,7 +2164,7 @@ def main_cli(argv = sys.argv):
                     "ndigits": 0,
             },
             "psrf-ln-likelihood": {
-                    "cheaders": [
+                    "headers": [
                             "psrf_ln_likelihood",
                     ],
                     "label": "PSRF of log likelihood",
