@@ -1,5 +1,9 @@
 # Overview
 
+This project is archived on [zenodo](https://doi.org/10.5281/zenodo.3822724):
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3822724.svg)](https://doi.org/10.5281/zenodo.3822724)
+
 This repository serves as an
 [open-science notebook](http://en.wikipedia.org/wiki/Open_notebook_science)
 for research to assess the performance of
